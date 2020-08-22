@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<script src="lib/jquery.min.js"></script>
+<script src="lib/bootstrap.min.js"></script>
+<script>
+	function ContainsSubtext() {
+		strText = document.getElementById("fullText").value;
+		strSubtext = document.getElementById("subText").value;
+		var positionMatches = "";
+		var startFromPos = 0;	
+		do {
+			var position = strText.indexOf(strSubtext, startFromPos);			
+			if ( position > -1){
+				positionMatches += (position + " ");
+				startFromPos = position + 1;
+			}
+
+		} while (position > -1 && startFromPos <= strText.length)
+		if (positionMatches=="") {
+			document.getElementById("output").innerHTML = "No matches found";
+		} else {
+			document.getElementById("output").innerHTML = ("Matching positions: " + positionMatches);
+		}
+		return positionMatches;
+	}
+</script>
+<body>
+
+<div class="col-xs-12" >
+    <div class="jumbotron text-center">
+        <h1>Find Subtext within Text field</h1>
+    </div>
+    <form name="searchForm">
+
+        <div class="form-group">
+            <p><input type="text" class="form-control" placeholder="Text" id="fullText" name="fullText" required/><br/>
+			<input type="text" class="form-control" placeholder="SubText" id="subText" name = "subText" required/></p>
+        </div>
+
+        <div>
+            <button type="button" class="btn btn-success btn-lg btn-block"  onclick="ContainsSubtext()">
+                <span class="glyphicon"></span>
+                Search
+            </button>
+			<br/>
+        </div>
+
+        <div class="form-group" id="output">
+        </div>
+    </form>
+</div>
+
+
+</body>
+</html>
