@@ -6,8 +6,8 @@
 <script src="lib/bootstrap.min.js"></script>
 <script>
 	function ContainsSubtext() {
-		strText = document.getElementById("fullText").value;
-		strSubtext = document.getElementById("subText").value;
+		strText = document.getElementById("fullText").value.toLowerCase();
+		strSubtext = document.getElementById("subText").value.toLowerCase();
 		var positionMatches = "";
 		var startFromPos = 0;	
 		do {
